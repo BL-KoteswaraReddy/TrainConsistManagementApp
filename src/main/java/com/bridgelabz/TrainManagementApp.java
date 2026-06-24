@@ -1,9 +1,6 @@
 package com.bridgelabz;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -62,6 +59,26 @@ public class TrainManagementApp {
         System.out.println(trainsConsist);
 
         System.out.println("UC4 Ordered consist operations completed...");
+
+
+
+
+        System.out.println("===============");
+        System.out.println("UC5 - Preserve Insertion Order of Bogies");
+        System.out.println("===============");
+
+        //LinkedHashSet preserves order and ensures uniques
+        Set<String>  formation = new LinkedHashSet<>();
+        formation.add("Sleeper");
+        formation.add("Engine");
+        formation.add("Cargo");
+        formation.add("Guard");
+
+        //adding duplicates
+        formation.add("Cargo");
+        formation.add("Guard");
+
+        System.out.println(formation);
 
 
 
