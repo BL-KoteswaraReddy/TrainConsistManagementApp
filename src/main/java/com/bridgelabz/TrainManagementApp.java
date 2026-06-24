@@ -2,6 +2,7 @@ package com.bridgelabz;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -31,6 +32,39 @@ public class TrainManagementApp {
 
         System.out.println("Bogies ID's After Insertion :");
         System.out.println(bogies);
+
+
+        System.out.println("===============");
+        System.out.println("UC4 - Maintain Ordered Bogie Consists");
+        System.out.println("===============");
+
+        //create a LinkedList
+        //Linkedlist mantains insertion order and allows fast inserts
+        LinkedList<String> trainsConsist = new LinkedList<>();
+        trainsConsist.add("Sleeper");
+        trainsConsist.add("AC");
+        trainsConsist.add("Guard");
+        trainsConsist.add("Engine");
+
+        //after adding bogies
+        System.out.println(trainsConsist);
+
+        trainsConsist.addFirst("Sleeper");
+        trainsConsist.addLast("AC");
+
+        System.out.println("After adding Cargo at  positon 2");
+        trainsConsist.add(2,"Cargo");
+        System.out.println(trainsConsist);
+
+        System.out.println("After removing first and last bogi");
+        trainsConsist.removeFirst();
+        trainsConsist.removeLast();
+        System.out.println(trainsConsist);
+
+        System.out.println("UC4 Ordered consist operations completed...");
+
+
+
 
     }
 }
