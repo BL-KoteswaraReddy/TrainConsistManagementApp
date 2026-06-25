@@ -204,7 +204,36 @@ public class TrainManagementApp {
             System.out.println("Invalid cargo id");
 
 
-        //Define Regex Rules
+        System.out.println("===============");
+        System.out.println("UC12 - Safety compliance check for Goods Bogies");
+        System.out.println("===============");
+
+        //Create Good bogie list
+        List<GoodBogies> goodBogies = new ArrayList<>();
+        goodBogies.add(new GoodBogies("Cylindrical", "Petroleum"));
+        goodBogies.add(new GoodBogies("Open", "Coal"));
+        goodBogies.add(new GoodBogies("Box", "Grain"));
+        goodBogies.add(new GoodBogies("Cylindrical", "Coal"));
+
+        boolean safetyComplaint = goodBogies.stream().allMatch(bogie -> !bogie.getType().equalsIgnoreCase("Cylindrical") || bogie.getCargo().equalsIgnoreCase("Petroleum"));
+
+        //Displaying Good Bogies
+        System.out.println("Good Bogies");
+        goodBogies.forEach(System.out::println);
+
+
+        System.out.println("Safety Compliance Status: "+safetyComplaint);
+        if(safetyComplaint)
+        {
+            System.out.println("Train Format is Safe");
+        }
+        else
+        {
+            System.out.println("Train Format is not safe");
+        }
+
+
+
 
     }
     static class Bogie
@@ -230,6 +259,33 @@ public class TrainManagementApp {
             return "Bogie{" +
                     "name='" + name + '\'' +
                     ", capacity=" + capacity +
+                    '}';
+        }
+    }
+
+    static class GoodBogies
+    {
+        String type;
+        String cargo;
+
+        public GoodBogies(String type, String cargo) {
+            this.type = type;
+            this.cargo = cargo;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public String getCargo() {
+            return cargo;
+        }
+
+        @Override
+        public String toString() {
+            return "GoodBogies{" +
+                    "type='" + type + '\'' +
+                    ", cargo='" + cargo + '\'' +
                     '}';
         }
     }
