@@ -1,6 +1,7 @@
 package com.bridgelabz;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -112,6 +113,9 @@ public class TrainManagementApp {
         bogies1.add(new Bogie("AC chair", 30));
         bogies1.add(new Bogie("First class", 77));
         bogies1.add(new Bogie("cargo", 100));
+        bogies1.add(new Bogie("First class", 120));
+        bogies1.add(new Bogie("cargo", 110));
+
 
         System.out.println("=====Before sorting========");
         //System.out.println(bogies1);
@@ -136,8 +140,30 @@ public class TrainManagementApp {
         List<Bogie> filteredBogies = bogies1.stream().filter(b -> b.capacity>60).toList();
         filteredBogies.forEach(System.out::println);
 
+        System.out.println("===============");
+        System.out.println("UC9 - Group bogies by type");
+        System.out.println("===============");
 
 
+        System.out.println("All Bogies");
+        for (Bogie bogie: bogies1)
+        {
+            System.out.println(bogie);
+        }
+
+        //Group using Collector.GroupingBy
+        Map<String, List<Bogie>> groupedBogies = bogies1.stream().collect(Collectors.groupingBy( a -> a.name));
+
+        //grouped bogies
+        System.out.println("Grouped Bogies");
+        for (Map.Entry<String, List<Bogie>> entry: groupedBogies.entrySet())
+        {
+            System.out.println("Bogies type :"+ entry.getKey());
+            for(Bogie bogie: entry.getValue())
+            {
+                System.out.println("Capacity -> "+bogie.getCapacity());
+            }
+        }
 
     }
     static class Bogie
