@@ -1,6 +1,8 @@
 package com.bridgelabz;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -171,6 +173,38 @@ public class TrainManagementApp {
 
         long numberOfSeats = bogies1.stream().map(b-> b.getCapacity()).reduce(0, Integer::sum);
         System.out.println("Total capacity of the train :"+ numberOfSeats);
+
+
+        System.out.println("===============");
+        System.out.println("UC11 - Count total seats in Train");
+        System.out.println("===============");
+
+
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter train ID (Format: TRN-1234): ");
+        String trainId = scanner.nextLine();
+        System.out.println("Enter Cargo Code (Format: PET-AB): ");
+        String cargoId = scanner.nextLine();
+
+        Pattern trainPattern = Pattern.compile("^TRN-\\d{4}$");
+        Pattern cargoPattern = Pattern.compile("^PET-AB$");
+
+        Matcher trainMatcher = trainPattern.matcher(trainId);
+        Matcher cargoMatcher = cargoPattern.matcher(cargoId);
+
+        if(trainMatcher.matches())
+            System.out.println("Valid train Id " +true);
+        else
+            System.out.println("Invalid Train ID");
+
+        if(cargoMatcher.matches())
+            System.out.println("Valid cargo id " +true);
+        else
+            System.out.println("Invalid cargo id");
+
+
+        //Define Regex Rules
 
     }
     static class Bogie
