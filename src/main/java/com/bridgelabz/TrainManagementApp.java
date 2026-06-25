@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class TrainManagementApp {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidCapacityException {
 
         System.out.println("===============");
         System.out.println("UC3 - Track Unique Bogie IDs");
@@ -264,6 +264,29 @@ public class TrainManagementApp {
 
         System.out.println("Loop execution time :"+(endTime1-startTime1));
 
+
+        System.out.println("===============");
+        System.out.println("UC14 - Handle Invalid Bogie capacity");
+        System.out.println("===============");
+
+        List<Bogie> bogies2 = new ArrayList<>();
+        System.out.println("Please Enter Coach type :");
+        String coachType = scanner.nextLine();
+        System.out.println("Please Enter capacity :");
+        try
+        {
+            int capacity = scanner.nextInt();
+            if(capacity<=0)
+            {
+                throw new InvalidCapacityException("Error: Capacity must be greater than 0");
+            }
+            bogies2.add(new Bogie(coachType, capacity));
+            System.out.println("Bogies added successfully");
+        }
+        catch (InvalidCapacityException i)
+        {
+            System.out.println(i.getMessage());
+        }
 
     }
     static class Bogie
