@@ -101,5 +101,58 @@ public class TrainManagementApp {
         }
 
 
+        //
+        System.out.println("===============");
+        System.out.println("UC7 - Sort bogies by capacity(Comparator)");
+        System.out.println("===============");
+
+        //Create list of passenger bogies
+        List<Bogie> bogies1 = new ArrayList<>();
+        bogies1.add(new Bogie("Sleeper", 25));
+        bogies1.add(new Bogie("General class", 50));
+        bogies1.add(new Bogie("AC chair", 30));
+        bogies1.add(new Bogie("First class", 77));
+        bogies1.add(new Bogie("cargo", 100));
+
+        System.out.println("=====Before sorting========");
+        //System.out.println(bogies1);
+        for(Bogie bogie: bogies1)
+        {
+            System.out.println(bogie);
+        }
+
+        System.out.println("======After sorting========");
+        bogies1.sort(Comparator.comparingInt(Bogie::getCapacity));
+
+        for (Bogie bogie: bogies1)
+        {
+            System.out.println(bogie);
+        }
+    }
+    static class Bogie
+    {
+        String name;
+        int capacity;
+
+        public String getName() {
+            return name;
+        }
+
+        public int getCapacity() {
+            return capacity;
+        }
+
+        public Bogie(String name, int capacity) {
+            this.name = name;
+            this.capacity = capacity;
+        }
+
+        @Override
+        public String toString() {
+            return "Bogie{" +
+                    "name='" + name + '\'' +
+                    ", capacity=" + capacity +
+                    '}';
+        }
     }
 }
