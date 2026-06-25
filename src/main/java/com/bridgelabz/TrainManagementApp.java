@@ -203,7 +203,6 @@ public class TrainManagementApp {
         else
             System.out.println("Invalid cargo id");
 
-
         System.out.println("===============");
         System.out.println("UC12 - Safety compliance check for Goods Bogies");
         System.out.println("===============");
@@ -233,6 +232,37 @@ public class TrainManagementApp {
         }
 
 
+        System.out.println("===============");
+        System.out.println("UC13 - Performance comparision");
+        System.out.println("===============");
+
+
+        //record start time
+        long startTime = System.nanoTime();
+
+        List<Bogie> filteredBogiesUsingStream = bogies1.stream().filter(b -> b.getCapacity()>50).toList();
+
+        //record end time
+        long endTime = System.nanoTime();
+
+        System.out.println("Stream execution time :"+(endTime-startTime));
+
+
+        List<Bogie> filteredBogiesUsingLoop = new ArrayList<>();
+        //record start time
+        long startTime1 = System.nanoTime();
+            for(Bogie bogies2 : bogies1)
+            {
+                if(bogies2.getCapacity()>50)
+                {
+                    filteredBogiesUsingLoop.add(bogies2);
+                }
+            }
+
+        //record end time
+        long endTime1 = System.nanoTime();
+
+        System.out.println("Loop execution time :"+(endTime1-startTime1));
 
 
     }
