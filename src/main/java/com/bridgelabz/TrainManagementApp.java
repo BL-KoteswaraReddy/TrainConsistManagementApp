@@ -101,7 +101,6 @@ public class TrainManagementApp {
         }
 
 
-        //
         System.out.println("===============");
         System.out.println("UC7 - Sort bogies by capacity(Comparator)");
         System.out.println("===============");
@@ -128,6 +127,18 @@ public class TrainManagementApp {
         {
             System.out.println(bogie);
         }
+
+        System.out.println("===============");
+        System.out.println("UC8 - Sort bogies by using streams");
+        System.out.println("===============");
+
+        System.out.println("=====Filtered Bogies======(Capacity>60)");
+        List<Bogie> filteredBogies = bogies1.stream().filter(b -> b.capacity>60).toList();
+        filteredBogies.forEach(System.out::println);
+
+
+
+
     }
     static class Bogie
     {
