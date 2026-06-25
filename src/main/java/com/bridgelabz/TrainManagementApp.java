@@ -165,6 +165,13 @@ public class TrainManagementApp {
             }
         }
 
+        System.out.println("===============");
+        System.out.println("UC10 - Count total seats in Train");
+        System.out.println("===============");
+
+        long numberOfSeats = bogies1.stream().map(b-> b.getCapacity()).reduce(0, Integer::sum);
+        System.out.println("Total capacity of the train :"+ numberOfSeats);
+
     }
     static class Bogie
     {
