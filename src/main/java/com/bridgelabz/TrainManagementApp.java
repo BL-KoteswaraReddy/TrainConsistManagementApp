@@ -81,6 +81,24 @@ public class TrainManagementApp {
         System.out.println(formation);
 
 
+        System.out.println("===============");
+        System.out.println("UC6 - Preserve Insertion Order of Bogies");
+        System.out.println("===============");
+
+        //HashMap stores data in key -> value format
+
+        HashMap<String, Integer> capacityMap = new HashMap<>();
+        capacityMap.put("Sleeper", 15);
+        capacityMap.put("AC chair", 20);
+        capacityMap.put("General class", 40);
+        capacityMap.put("Cargo", 50);
+        capacityMap.put("First class", 15);
+
+        System.out.println("Bogi capacity details");
+        for(Map.Entry<String, Integer> entry : capacityMap.entrySet())
+        {
+            System.out.println("Coach Type: "+entry.getKey() +", capacity: "+entry.getValue());
+        }
 
 
     }
