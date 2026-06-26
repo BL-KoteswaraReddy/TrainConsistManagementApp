@@ -291,7 +291,7 @@ public class TrainManagementApp {
             System.out.println(i.getMessage());
         }
 
-        //
+
         System.out.println("===============");
         System.out.println("UC15 - Safe cargo assignment");
         System.out.println("===============");
@@ -299,6 +299,35 @@ public class TrainManagementApp {
         GoodBogies bogies3 = new GoodBogies("Cylindrical", "Petroleum");
         assignCargo(bogies3);
         System.out.println("program working continuesly ");
+
+
+        System.out.println("===============");
+        System.out.println("UC16 - Manual Sorting using Bubble sort");
+        System.out.println("===============");
+
+        //create arrays to store bogie capacities
+        int [] capacities = {21,33,44,55,6,75,12};
+        System.out.println("Orignal capacities :");
+       String orignalCapacities =  Arrays.stream(capacities).
+                mapToObj(String:: valueOf).collect(Collectors.joining(", "));
+        System.out.println(orignalCapacities);
+
+        for(int i=0; i<capacities.length;i++)
+        {
+            for(int j=i+1; j<capacities.length; j++)
+            {
+                if(capacities[i]>capacities[j])
+                {
+                    int temp = capacities[i];
+                    capacities[i] = capacities[j];
+                    capacities[j] = temp;
+                }
+            }
+        }
+       String sortedBogies =  Arrays.stream(capacities)
+                .mapToObj(String:: valueOf)
+                .collect(Collectors.joining(", "));
+        System.out.println("Sorted Bogies : "+sortedBogies);
 
     }
 
