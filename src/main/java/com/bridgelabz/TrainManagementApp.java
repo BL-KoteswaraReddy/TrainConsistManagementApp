@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class TrainManagementApp {
 
-    public static void main(String[] args) throws InvalidCapacityException {
+    public static void main(String[] args) throws InvalidCapacityException, CargoSafetyException {
 
         System.out.println("===============");
         System.out.println("UC3 - Track Unique Bogie IDs");
@@ -208,17 +208,17 @@ public class TrainManagementApp {
         System.out.println("===============");
 
         //Create Good bogie list
-        List<GoodBogies> goodBogies = new ArrayList<>();
-        goodBogies.add(new GoodBogies("Cylindrical", "Petroleum"));
-        goodBogies.add(new GoodBogies("Open", "Coal"));
-        goodBogies.add(new GoodBogies("Box", "Grain"));
-        goodBogies.add(new GoodBogies("Cylindrical", "Coal"));
+        List<GoodBogie> goodBogie = new ArrayList<>();
+        goodBogie.add(new GoodBogie("Cylindrical", "Petroleum"));
+        goodBogie.add(new GoodBogie("Open", "Coal"));
+        goodBogie.add(new GoodBogie("Box", "Grain"));
+        goodBogie.add(new GoodBogie("Cylindrical", "Coal"));
 
-        boolean safetyComplaint = goodBogies.stream().allMatch(bogie -> !bogie.getType().equalsIgnoreCase("Cylindrical") || bogie.getCargo().equalsIgnoreCase("Petroleum"));
+        boolean safetyComplaint = goodBogie.stream().allMatch(bogie -> !bogie.getType().equalsIgnoreCase("Cylindrical") || bogie.getCargo().equalsIgnoreCase("Petroleum"));
 
         //Displaying Good Bogies
         System.out.println("Good Bogies");
-        goodBogies.forEach(System.out::println);
+        goodBogie.forEach(System.out::println);
 
 
         System.out.println("Safety Compliance Status: "+safetyComplaint);
@@ -270,11 +270,12 @@ public class TrainManagementApp {
         System.out.println("===============");
 
         List<Bogie> bogies2 = new ArrayList<>();
-        System.out.println("Please Enter Coach type :");
-        String coachType = scanner.nextLine();
-        System.out.println("Please Enter capacity :");
+
         try
         {
+            System.out.println("Please Enter Coach type :");
+            String coachType = scanner.nextLine();
+            System.out.println("Please Enter capacity :");
             int capacity = scanner.nextInt();
             if(capacity<=0)
             {
@@ -282,13 +283,45 @@ public class TrainManagementApp {
             }
             bogies2.add(new Bogie(coachType, capacity));
             System.out.println("Bogies added successfully");
+
+
         }
         catch (InvalidCapacityException i)
         {
             System.out.println(i.getMessage());
         }
 
+        //
+        System.out.println("===============");
+        System.out.println("UC15 - Safe cargo assignment");
+        System.out.println("===============");
+
+        GoodBogies bogies3 = new GoodBogies("Cylindrical", "Petroleum");
+        assignCargo(bogies3);
+        System.out.println("program working continuesly ");
+
     }
+
+    public static void assignCargo(GoodBogies bogie) throws CargoSafetyException {
+        System.out.println("Assigning Cargo");
+        try {
+
+            if (!bogie.getShape().equalsIgnoreCase("Cylindrical") || !bogie.getCargo().equalsIgnoreCase("Petroleum"))
+            {
+                System.out.println("Unsafe Cargo assignment");
+                throw new CargoSafetyException("Cargo validation completed for Rectangular shape");
+            }
+            System.out.println("Cargo assigned successfully");
+        }
+        catch (CargoSafetyException c) {
+            System.out.println(c.getMessage());
+        }
+        finally {
+            System.out.println("Logging cargo assignment");
+        }
+
+    }
+
     static class Bogie
     {
         String name;
@@ -316,12 +349,12 @@ public class TrainManagementApp {
         }
     }
 
-    static class GoodBogies
+    static class GoodBogie
     {
         String type;
         String cargo;
 
-        public GoodBogies(String type, String cargo) {
+        public GoodBogie(String type, String cargo) {
             this.type = type;
             this.cargo = cargo;
         }
@@ -338,6 +371,33 @@ public class TrainManagementApp {
         public String toString() {
             return "GoodBogies{" +
                     "type='" + type + '\'' +
+                    ", cargo='" + cargo + '\'' +
+                    '}';
+        }
+    }
+
+    static class GoodBogies
+    {
+        private String shape;
+        private String cargo;
+
+        public GoodBogies(String shape, String cargo) {
+            this.shape = shape;
+            this.cargo = cargo;
+        }
+
+        public String getShape() {
+            return shape;
+        }
+
+        public String getCargo() {
+            return cargo;
+        }
+
+        @Override
+        public String toString() {
+            return "GoodBogies{" +
+                    "shape='" + shape + '\'' +
                     ", cargo='" + cargo + '\'' +
                     '}';
         }
