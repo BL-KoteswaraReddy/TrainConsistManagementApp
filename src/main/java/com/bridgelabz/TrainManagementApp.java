@@ -342,6 +342,27 @@ public class TrainManagementApp {
         System.out.println(Arrays.toString(bogiewithNames));
 
 
+        System.out.println("===============");
+        System.out.println("UC18 - Linear search for Bogie IDs");
+        System.out.println("===============");
+
+        String bogieIds[] = {"A123", "GE123", "CA345", "FI456", "SE345"};
+
+        String searchId = "SE345";
+        boolean found = false;
+        for(String id: bogieIds)
+        {
+            if(id.equals(searchId))
+            {
+                found = true;
+            }
+        }
+        if(found)
+            System.out.println("Bogie Id found :"+searchId);
+        else
+            System.out.println("Bogie Id not found :"+searchId);
+
+
     }
 
     public static void assignCargo(GoodBogies bogie) throws CargoSafetyException {
