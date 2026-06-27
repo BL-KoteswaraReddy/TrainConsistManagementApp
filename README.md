@@ -492,6 +492,5 @@ Contributions, suggestions, and improvements are welcome.
 
 ---
 
-# 📄 License
 
 This project is created for educational and learning purposes.
