@@ -348,19 +348,40 @@ public class TrainManagementApp {
 
         String bogieIds[] = {"A123", "GE123", "CA345", "FI456", "SE345"};
 
-        String searchId = "SE345";
+        String searchBogie = "SE345";
         boolean found = false;
         for(String id: bogieIds)
         {
-            if(id.equals(searchId))
+            if(id.equals(searchBogie))
             {
                 found = true;
             }
         }
         if(found)
-            System.out.println("Bogie Id found :"+searchId);
+            System.out.println("Bogie Id found using Linear Search:"+searchBogie);
         else
-            System.out.println("Bogie Id not found :"+searchId);
+            System.out.println("Bogie Id not found using Linear Search:"+searchBogie);
+
+
+
+        System.out.println("===============");
+        System.out.println("UC19 - Binary search for Bogie IDs");
+        System.out.println("===============");
+
+        Arrays.sort(bogieIds);
+        System.out.println("after Sorting Bogi Ids : "+Arrays.toString(bogieIds));
+        int index = Arrays.binarySearch(bogieIds, searchBogie);
+
+        if(index>=0)
+        {
+            System.out.println("Bogie found using Binary Search: " +index);
+        }
+        else
+        {
+            System.out.println("Bogie Not found ");
+        }
+
+
 
 
     }
