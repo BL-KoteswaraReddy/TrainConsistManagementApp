@@ -329,6 +329,19 @@ public class TrainManagementApp {
                 .collect(Collectors.joining(", "));
         System.out.println("Sorted Bogies : "+sortedBogies);
 
+
+        System.out.println("===============");
+        System.out.println("UC17 - Sort Bogie names using Arrays.sort()");
+        System.out.println("===============");
+
+        String bogiewithNames[] = {"Sleeper", "AC", "First Class", "Second Class", "General", "Cargo"};
+        System.out.println("Original list: "+bogiewithNames);
+
+        System.out.println("After sorting based on names");
+        Arrays.sort(bogiewithNames);
+        System.out.println(Arrays.toString(bogiewithNames));
+
+
     }
 
     public static void assignCargo(GoodBogies bogie) throws CargoSafetyException {
@@ -348,6 +361,9 @@ public class TrainManagementApp {
         finally {
             System.out.println("Logging cargo assignment");
         }
+
+
+
 
     }
 
