@@ -348,7 +348,7 @@ public class TrainManagementApp {
 
         String bogieIds[] = {"A123", "GE123", "CA345", "FI456", "SE345"};
 
-        String searchBogie = "SE345";
+        String searchBogie = "";
         boolean found = false;
         for(String id: bogieIds)
         {
@@ -381,9 +381,22 @@ public class TrainManagementApp {
             System.out.println("Bogie Not found ");
         }
 
+        System.out.println("===============");
+        System.out.println("UC20 - Checking Bogies are exits or not");
+        System.out.println("===============");
 
+        try {
+            if (searchBogie.length() == 0)
+                throw new IllegalStateException("Bogie not exist with ID"+ searchBogie);
+            System.out.println("Bogies are exist");
+            System.out.println("Exception Handling During Search");
+        }
+        catch (IllegalStateException i)
+        {
+            System.out.println(" Error : "+i.getMessage());;
+        }
 
-
+        System.out.println("UC20 Execution Completed ");
     }
 
     public static void assignCargo(GoodBogies bogie) throws CargoSafetyException {
@@ -403,8 +416,6 @@ public class TrainManagementApp {
         finally {
             System.out.println("Logging cargo assignment");
         }
-
-
 
 
     }
