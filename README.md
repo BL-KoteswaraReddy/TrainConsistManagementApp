@@ -275,6 +275,147 @@ Features
 
 ---
 
+---
+
+## ✅ UC16 - Sort Passenger Bogies by Capacity (Bubble Sort)
+
+### Concepts Used
+
+- Bubble Sort Algorithm
+- Arrays
+- Nested Loops
+- Swapping Logic
+
+### Features
+
+- Sorts passenger bogie capacities using the Bubble Sort algorithm.
+- Demonstrates manual comparison and swapping of adjacent elements.
+- Avoids using built-in sorting methods for educational purposes.
+
+### Example
+
+```text
+Before Sorting:
+72 50 120 90 65
+
+After Sorting:
+50 65 72 90 120
+```
+
+---
+
+## ✅ UC17 - Sort Bogie Names Using Arrays.sort()
+
+### Concepts Used
+
+- Arrays.sort()
+- Natural Ordering
+
+### Features
+
+- Sorts bogie names alphabetically.
+- Uses Java's optimized built-in sorting algorithm.
+- Produces clean and maintainable code.
+
+### Example
+
+```text
+Before Sorting:
+Sleeper
+AC Chair
+General
+First Class
+
+After Sorting:
+AC Chair
+First Class
+General
+Sleeper
+```
+
+---
+
+## ✅ UC18 - Linear Search for Bogie ID
+
+### Concepts Used
+
+- Linear Search
+- Arrays
+- Sequential Traversal
+
+### Features
+
+- Searches for a bogie ID in an unsorted array.
+- Traverses each element sequentially.
+- Stops searching immediately when the bogie is found.
+
+### Example
+
+```text
+Searching Bogie ID: BG104
+
+Result:
+Bogie Found
+```
+
+---
+
+## ✅ UC19 - Binary Search for Bogie ID
+
+### Concepts Used
+
+- Binary Search
+- Arrays.binarySearch()
+- Arrays.sort()
+
+### Features
+
+- Searches bogie IDs efficiently using Binary Search.
+- Requires the array to be sorted before searching.
+- Demonstrates logarithmic search performance.
+
+### Example
+
+```text
+Sorted Bogie IDs:
+BG101
+BG102
+BG103
+BG104
+
+Searching:
+BG103
+
+Result:
+Bogie Found at Index 2
+```
+
+---
+
+## ✅ UC20 - Exception Handling During Search Operations
+
+### Concepts Used
+
+- IllegalStateException
+- Defensive Programming
+- Fail-Fast Principle
+
+### Features
+
+- Prevents search operations on an empty train.
+- Throws IllegalStateException when no bogies are available.
+- Displays meaningful error messages.
+- Stops invalid operations before execution.
+
+### Example
+
+```text
+Searching Bogie...
+
+Exception:
+No bogies available in the train. Search operation cannot be performed.
+```
+
 # ▶️ How to Run
 
 Clone the repository
